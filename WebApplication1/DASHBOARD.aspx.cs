@@ -54,14 +54,20 @@ namespace WebApplication1
             if (a > 0)
             {
                 ClientScript.RegisterStartupScript(typeof(Page), "script", "alert('Data Stored Sucessfull...!!');",true);
-                
+                ClearControls()
             }
             else
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert(' Failed  ')</script>");
+                ClearControls()
             }
             con.Close();
 
+        }
+        void ClearControls()
+        {
+            txtfname.Text = txtlname.Text = txtage.Text = txtaddress.Text = txtnum.Text = " ";
+            DropDownList1.ClearSelection();
         }
     }
 }
