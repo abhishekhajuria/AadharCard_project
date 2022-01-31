@@ -41,7 +41,6 @@ namespace WebApplication1
         protected void Button1_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(cs);
-            string query = "insert into signUp values(@fname,@lname,@gender,@age,@phnumber,@address,@adharNo)";
             SqlCommand cmd = new SqlCommand(query, con);
             cmd.Parameters.AddWithValue("@fname",txtfname.Text);
             cmd.Parameters.AddWithValue("@lname",txtlname.Text);
@@ -54,13 +53,10 @@ namespace WebApplication1
             int a = cmd.ExecuteNonQuery();
             if (a > 0)
             {
-                ClientScript.RegisterStartupScript(typeof(Page), "script", "alert('Data Stored Sucessfully...!!');",true);
-                ClearControls();
             }
             else
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert(' Failed  ')</script>");
-                ClearControls();
             }
             con.Close();
 
